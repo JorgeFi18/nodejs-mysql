@@ -1,0 +1,60 @@
+<% include partials/_header %>
+
+<div class="container mt-5">
+    <div class="row">
+        <a class="navbar-brand" href="/">Volver</a>
+        <div class="col-md-12">
+            <div style="display: flex; justify-content: space-between;">
+                <h1>Crear nuevo prestamo</h1>
+                <a href="/add-book" class="btn btn-info pull-right"> + Agregar</a>
+            </div>
+            <hr>
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <td>Codigo Libro</td>
+                    <td><%= data.book.codigo_libro %></td>
+                </tr>
+                <tr>
+                    <td>Titulo</td>
+                    <td><%= data.book.titulo %></td>
+                </tr>
+                <tr>
+                    <td>Editorial</td>
+                    <td><%= data.book.editorial %></td>
+                </tr>
+                <tr>
+                    <td>Edicion</td>
+                    <td><%= data.book.edicion %></td>
+                </tr>
+            </table>
+            <div class="col-md-5 offset-md-3 card">
+                <div class="card-body">
+                    <h2>Detalle del prestamo</h2>
+                    <form action="/history-add/<%= data.book.codigo_libro %>" method="POST">
+                        <div class="form-group">
+                            <select name="id_alumno" class="form-control">
+                                <% for(var i = 0; i < data.students.length; i++) { %>
+                                <option value="<%= data.students[i].carnet %>">
+                                    <%= data.students[i].nombres %>
+                                    <%= data.students[i].apellidos %>
+                                </option>
+                                <% } %>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="fecha_prestamo" class="form-control" placeholder="Fecha de prestamo">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="fecha_devolucion" class="form-control" placeholder="Fecha de devolucion">
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            Registrar
+                          </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include partials/_footer %>

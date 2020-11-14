@@ -1,0 +1,75 @@
+<% include partials/_header %>
+
+<div class="container mt-5">
+  <div class="row">
+    <a class="navbar-brand" href="/">Volver</a>
+    <div class="col-md-12">
+      <div style="display: flex; justify-content: space-between;">
+        <h1>Historial de prestamos</h1>
+        <a href="/history-add/<%= data.book.codigo_libro %>" class="btn btn-info pull-right"> + Agregar</a>
+      </div>
+      <hr>
+      <table class="table table-bordered table-hover">
+        <tr>
+            <td>Codigo Libro</td>
+            <td><%= data.book.codigo_libro %></td>
+        </tr>
+        <tr>
+            <td>Titulo</td>
+            <td><%= data.book.titulo %></td>
+        </tr>
+        <tr>
+            <td>Editorial</td>
+            <td><%= data.book.editorial %></td>    
+        </tr>
+        <tr>
+            <td>Edicion</td>
+            <td><%= data.book.edicion %></td>    
+        </tr>
+        <tr>
+            <td>Nombre Autor</td>
+            <td><%= data.book.nombre_autor %></td>  
+        </tr>
+        <tr>
+            <td>Nacionalidad</td>
+            <td><%= data.book.nacionalidad %></td>
+        </tr>
+      </table>
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <td>Carne</td>
+            <td>Apellidos</td>
+            <td>Nombres</td>
+            <td>Direccion</td>
+            <td>Telefono</td>
+            <td>Fecha Prestamo</td>
+            <td>Fecha Devolucion</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (data) { %>
+            <% for(var i = 0; i < data.history.length; i++) { %>
+              <tr>
+                <td><%= data.history[i].carnet %></td>
+                <td><%= data.history[i].apellidos %></td>
+                <td><%= data.history[i].nombres %></td>
+                <td><%= data.history[i].direccion %></td>
+                <td><%= data.history[i].telefono %></td>
+                <td><%= data.history[i].fecha_prestamo %></td>
+                <td><%= data.history[i].fecha_devolucion %></td>
+              </tr>
+            <% } %>
+          <% } %>
+          <% if (data.history.length == 0) {%>
+            <tr>
+                <td colspan="7">No hay movimientos en este libro</td>
+            </tr>
+          <% }%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<% include partials/_footer %>

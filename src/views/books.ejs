@@ -1,0 +1,47 @@
+<% include partials/_header %>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <div style="display: flex; justify-content: space-between;">
+        <h1>Listado de Libros</h1>
+        <a href="/add-book" class="btn btn-info pull-right"> + Agregar</a>
+      </div>
+      <hr>
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <td>n°</td>
+            <td>Titulo</td>
+            <td>Editorial</td>
+            <td>Edicion</td>
+            <td>Autor</td>
+            <td>Nacionalidad</td>
+            <td>Acciones</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (data) { %>
+            <% for(var i = 0; i < data.length; i++) { %>
+              <tr>
+                <td><%= (i + 1) %></td>
+                <td><%= data[i].titulo %></td>
+                <td><%= data[i].editorial %></td>
+                <td><%= data[i].edicion %></td>
+                <td><%= data[i].nombre_autor %></td>
+                <td><%= data[i].nacionalidad %></td>
+                <td>
+                  <a href="/update/<%= data[i].codigo_libro %>" class="btn btn-info btn-sm">Actualizar</a>
+                  <a href="/delete/<%= data[i].codigo_libro %>" class="btn btn-danger btn-sm">Eliminar</a>
+                  <a href="/history/<%= data[i].codigo_libro %>" class="btn btn-success btn-sm">Historial</a>
+                </td>
+              </tr>
+            <% } %>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<% include partials/_footer %>

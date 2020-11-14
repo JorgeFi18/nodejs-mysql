@@ -1,0 +1,34 @@
+<% include partials/_header %>
+
+<div class="container mt-5">
+  <div class="row">
+    <a class="navbar-brand" href="/">Volver</a>
+    <div class="col-md-12">
+      <div class="card-body">
+        <h1>Agregar Libro</h1>
+        <form action="/students/add" method="POST">
+          <div class="form-group">
+            <input type="text" name="titulo" placeholder="Titulo" class="form-control" autofocus>
+          </div>
+          <div class="form-group">
+            <input type="text" name="editorial" placeholder="Editorial" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="edicion" placeholder="Edicion" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="nombre_autor" placeholder="Autor" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="nacionalidad" placeholder="Nacionalidad" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Agregar Libro
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include partials/_footer %>
